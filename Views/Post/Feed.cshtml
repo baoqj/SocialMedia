@@ -1,0 +1,25 @@
+@model List<SocialMedia.Models.PostModel>
+
+@{
+    ViewData["Title"] = "Feed";
+}
+
+<h2>Feed</h2>
+
+@foreach (var post in Model)
+{
+    <div class="post">
+        <h3>@post.UserName</h3>
+        <p>@post.Content</p>
+        @if (!string.IsNullOrEmpty(post.ImageUrl))
+        {
+            <img src="@post.ImageUrl" alt="Post image" width="200" />
+        }
+        <p>Likes: @post.Likes</p>
+        <form asp-action="LikePost" method="post">
+            <button type="submit">Like</button>
+        </form>
+
+        <a href="/Post/PostDetails/@post.Id">View Details</a>
+    </div>
+}

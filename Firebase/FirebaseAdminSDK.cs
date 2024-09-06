@@ -1,0 +1,1 @@
+// Admin SDK for Firebase integration with .NET (backend services)

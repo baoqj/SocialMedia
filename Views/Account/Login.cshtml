@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 400px;">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Login</h2>
+            <p class="text-muted">Please login to your account</p>
+        </div>
+
+        <form id="loginForm" class="needs-validation" novalidate>
+            <div class="form-group mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember Me</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+
+            <p class="text-center">
+                <a href="/Account/Register" class="text-decoration-none">Don't have an account? Register</a>
+            </p>
+        </form>
+
+        <p class="text-muted text-center mt-3">
+            &copy; 2024 Social Media App
+        </p>
+    </div>
+</div>
+
+<!-- Script for client-side validation -->
+<script type="module">
+    import { loginUser } from './js/auth.js';
+
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const form = event.target;
+
+        if (form.checkValidity()) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            loginUser(email, password);  // Call the loginUser function from auth.js
+        } else {
+            form.classList.add('was-validated');
+        }
+    });
+</script>

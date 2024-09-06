@@ -1,0 +1,35 @@
+@model SocialMedia.Models.UserModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h2>Edit Profile</h2>
+
+<form asp-action="EditProfile" method="post">
+    <div>
+        <label for="Name">Name:</label>
+        <input asp-for="Name" type="text" id="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Bio">Bio:</label>
+        <textarea asp-for="Bio" id="Bio"></textarea>
+        <span asp-validation-for="Bio" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="ProfilePictureUrl">Profile Picture URL:</label>
+        <input asp-for="ProfilePictureUrl" type="text" id="ProfilePictureUrl" />
+        <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="/Profile/ViewProfile">Cancel</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
